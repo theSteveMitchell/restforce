@@ -6,7 +6,7 @@ Bundler.require :default, :test
 require 'faye' unless RUBY_PLATFORM == 'java'
 
 require 'webmock/rspec'
-
+require 'faraday/request/url_encoded'
 WebMock.disable_net_connect!
 
 RSpec.configure do |config|

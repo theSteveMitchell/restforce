@@ -7,11 +7,12 @@ module Restforce
       @env = env
       response = @app.call(env)
       env[:body] = Restforce::Mash.build(body, client)
+      response.env.body = env[:body]
       response
     end
 
     def body
-      @env[:body]
+      JSON.parse(@env[:body]) rescue @env[:body]
     end
   
   end

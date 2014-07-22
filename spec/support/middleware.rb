@@ -1,7 +1,8 @@
 module MiddlewareExampleGroup
   def self.included(base)
     base.class_eval do
-      let(:app)            { double('@app', :call => nil)            }
+      let(:response)       { double('response', :env => double('env', :body => "").as_null_object )}
+      let(:app)            { double('@app', :call => response )}
       let(:env)            { { :request_headers => {}, :response_headers => {} } }
       let(:retries)        { 3 }
       let(:options)        { { } }
