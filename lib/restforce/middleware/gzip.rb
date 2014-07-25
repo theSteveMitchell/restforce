@@ -15,7 +15,7 @@ module Restforce
     end
 
     def on_complete(env)
-      env[:body] = decompress(env[:body]) if gzipped?(env)
+      env[:body] = decompress(env[:body]) if @options[:compress] && gzipped?(env)
     end
 
     # Internal: Returns true if the response is gzipped.
